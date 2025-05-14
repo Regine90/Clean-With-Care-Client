@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import About from "./components/About";
+import Community from "./components/Community";
+import Contact from "./components/Contact";
+import Finding from "./components/Finding";
+import Index from "./components/Index";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Header from "./shared/Header";
+import Footer from "./shared/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
+  let index = 0;
+  carousel();
+
+  function carousel() {
+    let i;
+    let x = document.getElementsByClassName("slide-show");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    index++;
+    if (index > x.length) {
+      index = 1;
+    }
+    // x[index - 1].style.display = "block";
+    // setTimeout(carousel, 5000);
+  }
+
+  let mybutton = document.getElementById("myBtn");
+
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <About />
+      <Community />
+      <Contact />
+      <Finding />
+      <Index />
+      <Login />
+      <Signup />
+      <Footer myFunction = {topFunction}/>
     </>
-  )
-}
+  );
+};
 
 export default App
