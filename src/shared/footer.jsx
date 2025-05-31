@@ -1,5 +1,8 @@
 
-      function Footer({ myFunction }) {
+import React from "react";
+import "../shared/styles.css";
+
+function Footer({ myFunction }) {
         return (
           <footer>
             <div className="container">

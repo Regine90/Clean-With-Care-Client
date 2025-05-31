@@ -1,5 +1,5 @@
-import About from "./components/About";
-import Community from "./components/Community";
+import React, { useEffect } from "react";
+import About from "./components/About";;
 import Contact from "./components/Contact";
 import Finding from "./components/Finding";
 import Index from "./components/Index";
@@ -9,57 +9,45 @@ import Header from "./shared/Header";
 import Footer from "./shared/Footer";
 
 function App() {
-  let index = 0;
-  carousel();
+  // Scroll-to-top functionality
+  useEffect(() => {
+    const mybutton = document.getElementById("myBtn");
 
-  function carousel() {
-    let i;
-    let x = document.getElementsByClassName("slide-show");
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
-    }
-    index++;
-    if (index > x.length) {
-      index = 1;
-    }
-    // x[index - 1].style.display = "block";
-    // setTimeout(carousel, 5000);
-  }
+    const scrollFunction = () => {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    };
 
-  let mybutton = document.getElementById("myBtn");
+    window.addEventListener("scroll", scrollFunction);
 
-  window.onscroll = function () {
-    scrollFunction();
-  };
+    return () => {
+      window.removeEventListener("scroll", scrollFunction);
+    };
+  }, []);
 
-  function scrollFunction() {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      mybutton.style.display = "block";
-    } else {
-      mybutton.style.display = "none";
-    }
-  }
-  function topFunction() {
+  const topFunction = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-  }
+  };
 
   return (
     <>
       <Header />
-      <About />
-      <Community />
-      <Contact />
-      <Finding />
       <Index />
+      <About />
+      <Finding />
       <Login />
       <Signup />
-      <Footer myFunction = {topFunction}/>
+      <Contact />
+      <Footer myFunction={topFunction} />
     </>
   );
-};
+}
 
-export default App
+export default App;

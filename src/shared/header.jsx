@@ -1,8 +1,11 @@
+import React from "react";
+import "../shared/styles.css";
+
 function Header() {
   return (
     <header className="header">
       <a href="#" className="logo">
-        <i className="fa-solid fa-hand-holding-heart"> </i>CleanWithCare
+        <i className="fa-solid fa-hand-holding-heart"></i> CleanWithCare
       </a>
 
       <nav className="navbar">
@@ -13,18 +16,17 @@ function Header() {
       </nav>
 
       <div className="icons">
-        <div className="fa fa-search" id="search-btn"></div>
-        <div className="fa fa-user" id="login-btn"></div>
-        <div className="fa fa-bars" id="menu-btn"></div>
+        <i className="fa fa-search" id="search-btn"></i>
+        <i className="fa fa-user" id="login-btn"></i>
+        <i className="fa fa-bars" id="menu-btn"></i>
       </div>
 
       <form className="search-form">
-        <input type="search" id="search-box" placeholder="Search Here...." />
+        <input type="search" id="search-box" placeholder="Search here..." />
         <label htmlFor="search-box" className="fa fa-search"></label>
       </form>
     </header>
   );
 }
-
 
 export default Header;

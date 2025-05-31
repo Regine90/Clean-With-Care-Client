@@ -1,54 +1,70 @@
+import React from "react";
+import "../shared/styles.css";
+
 function Signup() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+  };
+
   return (
-    <main>
-      <div className="signup">
+    <main className="signup-page">
+      <section className="signup-hero">
         <h1>Sign Up</h1>
-        <form action="/signup.html" method="POST">
-          <div>
+        <p>Join CleanWithCare and become part of a caring community.</p>
+      </section>
+
+      <section className="signup-form">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
             <label htmlFor="first">First Name:</label>
             <input
-              type="first"
+              type="text"
               id="first"
               name="first"
               placeholder="First Name"
               required
             />
           </div>
-          <div>
+
+          <div className="form-group">
             <label htmlFor="last">Last Name:</label>
             <input
-              type="last"
+              type="text"
               id="last"
               name="last"
               placeholder="Last Name"
               required
             />
           </div>
-          <div>
+
+          <div className="form-group">
             <label htmlFor="email">Email Address:</label>
             <input
               type="email"
               id="email"
               name="email"
-              placeholder="Email"
+              placeholder="Your Email"
               required
             />
           </div>
-          <div>
+
+          <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
               type="password"
               id="password"
               name="password"
-              placeholder="Password"
+              placeholder="Your Password"
               required
             />
           </div>
-          <br />
-          <br />
+
+          <button type="submit" className="btn primary-btn">
+            Sign Up
+          </button>
         </form>
-        <button>Submit</button>
-      </div>
+      </section>
     </main>
   );
 }
