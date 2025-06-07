@@ -539,6 +539,31 @@ button.btn.primary-btn:hover {
   color: var(--MutedLavender);
 }
 
+.section-header {
+  text-align: center;
+  margin: 2rem 0 1rem;
+}
+
+.section-header h2 {
+  font-size: 2.4rem;
+  color: var(--Charcoal);
+}
+
+.section-header {
+  text-align: center;
+  font-size: 2.3rem;
+  margin: 2rem 0 1rem;
+  color: var(--PrimaryBlue);
+}
+
+.card-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+
 /* Testimonial Part & Body*/
 .index-hero {
   display: flex;

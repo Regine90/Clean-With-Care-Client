@@ -48,7 +48,6 @@ function Index() {
 
   return (
     <main>
-      {/* Hero Section */}
       <section className="index-hero">
         <div className="index-content">
           <h1>
@@ -67,7 +66,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Community Testimonials */}
       <section className="community-text">
         <h2>What our community says about us</h2>
       </section>
