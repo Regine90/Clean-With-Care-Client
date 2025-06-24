@@ -12,7 +12,7 @@ function Finding() {
       .then((response) => response.json())
       .then((results) => {
         console.log("Fetched data:", results);
-        setPeople(results);
+        setPeople(results.data); 
       })
       .catch((error) => console.log(error));
   }, []);
