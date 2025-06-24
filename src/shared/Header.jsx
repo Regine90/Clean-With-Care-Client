@@ -18,7 +18,6 @@ function Header() {
       </nav>
 
       <div className="icons">
-        <i className="fa fa-search" id="search-btn"></i>
         <i className="fa fa-user" id="login-btn"></i>
         <i className="fa fa-bars" id="menu-btn"></i>
       </div>
