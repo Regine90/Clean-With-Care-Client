@@ -5,8 +5,8 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function Signup() {
   const [formData, setFormData] = useState({
-    first: "",
-    last: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -21,32 +21,19 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Map frontend fields to backend expected fields
-    const requestData = {
-      firstName: formData.first,
-      lastName: formData.last,
-      email: formData.email,
-      password: formData.password,
-    };
-
     fetch(`${API_BASE_URL}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestData),
+      body: JSON.stringify(formData),
     })
       .then((res) => {
-        if (!res.ok) {
-          throw new Error("Failed to register");
-        }
+        if (!res.ok) throw new Error("Signup failed");
         return res.json();
       })
       .then((data) => {
         console.log("Signup successful:", data);
-        // You can redirect or show success message here
       })
-      .catch((err) => {
-        console.error("Signup error:", err);
-      });
+      .catch((err) => console.error("Signup error:", err));
   };
 
   return (
@@ -59,26 +46,24 @@ function Signup() {
       <section className="signup-form">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="first">First Name:</label>
+            <label htmlFor="firstName">First Name:</label>
             <input
               type="text"
-              id="first"
-              name="first"
-              placeholder="First Name"
-              value={formData.first}
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="last">Last Name:</label>
+            <label htmlFor="lastName">Last Name:</label>
             <input
               type="text"
-              id="last"
-              name="last"
-              placeholder="Last Name"
-              value={formData.last}
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
               onChange={handleChange}
               required
             />
@@ -90,7 +75,6 @@ function Signup() {
               type="email"
               id="email"
               name="email"
-              placeholder="Your Email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -103,7 +87,6 @@ function Signup() {
               type="password"
               id="password"
               name="password"
-              placeholder="Your Password"
               value={formData.password}
               onChange={handleChange}
               required
