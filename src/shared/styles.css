@@ -362,6 +362,28 @@ button.btn.primary-btn:hover {
   background-color: var(--MutedLavender);
 }
 
+.message-box {
+  margin-top: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message-box.success {
+  background-color: var(--SoftBeige);
+  color: var(--Charcoal);
+  border: 1px solid var(--PrimaryBlue);
+}
+
+.message-box.error {
+  background-color: #fdecea;
+  color: #c62828;
+  border: 1px solid #e57373;
+}
+
 /* Sign Up Page */
 .signup-page {
   padding: 4rem 2rem;
@@ -563,7 +585,6 @@ button.btn.primary-btn:hover {
   gap: 2rem;
 }
 
-
 /* Testimonial Part & Body*/
 .index-hero {
   display: flex;
@@ -635,4 +656,17 @@ button.btn.primary-btn:hover {
   border: 1px solid var(--PrimaryBlue);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin: 10px;
+}
+
+/* Media Query */
+
+@media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block;
+  }
+}
+
+#menu-btn {
+  display: none;
+  cursor: pointer;
 }

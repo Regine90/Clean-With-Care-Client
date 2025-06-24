@@ -9,6 +9,8 @@ function Login() {
     password: "",
   });
 
+  const [message, setMessage] = useState("");
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -27,8 +29,12 @@ function Login() {
       .then((res) => res.json())
       .then((data) => {
         console.log("Login successful:", data);
+        setMessage(data.success?.message || "Login successful!");
       })
-      .catch((err) => console.error("Login error:", err));
+      .catch((err) => {
+        console.error("Login error:", err);
+        setMessage("Login failed.");
+      });
   };
 
   return (
@@ -70,6 +76,12 @@ function Login() {
             Log In
           </button>
         </form>
+
+        {message && (
+          <div className="message-box">
+            <p>{message}</p>
+          </div>
+        )}
       </section>
     </main>
   );
