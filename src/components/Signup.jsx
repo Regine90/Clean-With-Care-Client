@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "../shared/styles.css";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Signup() {
+  const [formData, setFormData] = useState({
+    first: "",
+    last: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+
+    fetch(`${API_BASE_URL}/api/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Signup successful:", data);
+      })
+      .catch((err) => console.error("Signup error:", err));
   };
 
   return (
@@ -23,6 +49,8 @@ function Signup() {
               id="first"
               name="first"
               placeholder="First Name"
+              value={formData.first}
+              onChange={handleChange}
               required
             />
           </div>
@@ -34,6 +62,8 @@ function Signup() {
               id="last"
               name="last"
               placeholder="Last Name"
+              value={formData.last}
+              onChange={handleChange}
               required
             />
           </div>
@@ -45,6 +75,8 @@ function Signup() {
               id="email"
               name="email"
               placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -56,6 +88,8 @@ function Signup() {
               id="password"
               name="password"
               placeholder="Your Password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>

@@ -2,11 +2,13 @@ import "../shared/styles.css";
 import React, { useState, useEffect } from "react";
 import CommunityCard from "../components/CommunityCard";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Finding() {
   const [people, setPeople] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/people")
+    fetch(`${API_BASE_URL}/api/people`)
       .then((response) => response.json())
       .then((results) => {
         console.log("Fetched data:", results);

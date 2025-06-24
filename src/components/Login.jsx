@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "../shared/styles.css";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Login() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+
+    fetch(`${API_BASE_URL}/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Login successful:", data);
+      })
+      .catch((err) => console.error("Login error:", err));
   };
 
   return (
@@ -23,6 +47,8 @@ function Login() {
               id="email"
               name="email"
               placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -34,6 +60,8 @@ function Login() {
               id="password"
               name="password"
               placeholder="Your Password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
