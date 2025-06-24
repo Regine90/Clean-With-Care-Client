@@ -8,11 +8,11 @@ function Finding() {
   const [people, setPeople] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/people`)
+    fetch(`${API_BASE_URL}/api/community-helpers`)
       .then((response) => response.json())
       .then((results) => {
         console.log("Fetched data:", results);
-        setPeople(results.data.peoples);
+        setPeople(results);
       })
       .catch((error) => console.log(error));
   }, []);
