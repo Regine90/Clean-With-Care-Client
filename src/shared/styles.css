@@ -660,13 +660,36 @@ button.btn.primary-btn:hover {
 
 /* Media Query */
 
+/* Hide navbar on small screens by default */
 @media (max-width: 768px) {
-  #menu-btn {
-    display: inline-block;
+  .navbar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--PrimaryBlue);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    width: 200px;
+    display: none;
+  }
+
+  .navbar.active {
+    display: flex;
   }
 }
 
+/* Make burger icon hidden on large screens */
 #menu-btn {
   display: none;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block;
+    font-size: 1.8rem;
+    color: var(--White);
+  }
+}
+

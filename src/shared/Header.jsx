@@ -1,14 +1,21 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <header className="header">
       <Link to="/" className="logo">
         <i className="fa-solid fa-hand-holding-heart"></i> CleanWithCare
       </Link>
 
-      <nav className="navbar">
+      <nav className={`navbar ${menuOpen ? "active" : ""}`}>
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/find">Community Finding</Link>
@@ -18,8 +25,10 @@ function Header() {
       </nav>
 
       <div className="icons">
-        <i className="fa fa-user" id="login-btn"></i>
-        <i className="fa fa-bars" id="menu-btn"></i>
+        <Link to="/login" id="login-btn">
+          <i className="fa fa-user"></i>
+        </Link>
+        <i className="fa fa-bars" id="menu-btn" onClick={toggleMenu}></i>
       </div>
 
       <form className="search-form">
