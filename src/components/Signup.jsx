@@ -21,16 +21,32 @@ function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Map frontend fields to backend expected fields
+    const requestData = {
+      firstName: formData.first,
+      lastName: formData.last,
+      email: formData.email,
+      password: formData.password,
+    };
+
     fetch(`${API_BASE_URL}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(requestData),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to register");
+        }
+        return res.json();
+      })
       .then((data) => {
         console.log("Signup successful:", data);
+        // You can redirect or show success message here
       })
-      .catch((err) => console.error("Signup error:", err));
+      .catch((err) => {
+        console.error("Signup error:", err);
+      });
   };
 
   return (
