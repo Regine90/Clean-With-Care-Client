@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom";
-import "../shared/styles.css";
+import "./styles.css";
 
 function Header() {
   return (
-    <header className="header-container">
-      <div className="icons">
-        <Link to="/login" id="login-btn">
-          <i className="fa fa-user"></i>
-        </Link>
+    <header className="header">
+      <Link to="/" className="logo">
+        <i className="fa-solid fa-hand-holding-heart"></i> CleanWithCare
+      </Link>
 
+      <nav className="navbar">
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/find">Community Finding</Link>
+        <Link to="/contact">Contact Us</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Sign Up</Link>
+      </nav>
+
+      <div className="icons">
+        <i className="fa fa-user" id="login-btn"></i>
         <i className="fa fa-bars" id="menu-btn"></i>
       </div>
 
