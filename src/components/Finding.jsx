@@ -1,6 +1,7 @@
 import "../shared/styles.css";
 import React, { useState, useEffect } from "react";
 import CommunityCard from "../components/CommunityCard";
+import communityData from "../data/communityData";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -12,7 +13,7 @@ function Finding() {
       .then((response) => response.json())
       .then((results) => {
         console.log("Fetched data:", results);
-        setPeople(results.data); 
+        setPeople(communityData); 
       })
       .catch((error) => console.log(error));
   }, []);
