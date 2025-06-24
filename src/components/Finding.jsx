@@ -12,7 +12,7 @@ function Finding() {
       .then((response) => response.json())
       .then((results) => {
         console.log("Fetched data:", results);
-        setPeople(results.data); // <-- correct extraction here
+        setPeople(results.data); // IMPORTANT — correctly extract `data` here
       })
       .catch((error) => console.log(error));
   }, []);
@@ -30,9 +30,13 @@ function Finding() {
       <section className="community-section">
         <h2 className="section-header">Our Community Members</h2>
         <div className="card-row">
-          {people.map((person) => (
-            <CommunityCard key={person._id} person={person} />
-          ))}
+          {people.length === 0 ? (
+            <p>No community members found.</p>
+          ) : (
+            people.map((person) => (
+              <CommunityCard key={person._id} person={person} />
+            ))
+          )}
         </div>
       </section>
 

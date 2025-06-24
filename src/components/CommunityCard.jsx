@@ -4,14 +4,22 @@ function CommunityCard({ person }) {
   const [community, setCommunity] = useState(person);
 
   const handleChangeService = () => {
+    const services = [
+      "Teacher",
+      "Nurse",
+      "Gardener",
+      "Laundry Assistance",
+      "Organizing Help",
+      "Companion",
+    ];
+    let newService;
+    do {
+      newService = services[Math.floor(Math.random() * services.length)];
+    } while (newService === community.service);
+
     setCommunity((prevState) => ({
       ...prevState,
-      service:
-        prevState.service === "Laundry Assistance"
-          ? "Organizing Help"
-          : prevState.service === "Organizing Help"
-          ? "Deep Cleaning"
-          : "Laundry Assistance",
+      service: newService,
     }));
   };
 
@@ -19,9 +27,9 @@ function CommunityCard({ person }) {
     <div className="community-card">
       <h2>My Name Is {community.firstName}</h2>
       <p>I Live In {community.area}</p>
-      <p>I Can Help With {community.service}</p>
+      <p>I Work As A {community.service}</p>
       <button className="btn primary-btn" onClick={handleChangeService}>
-        Show Another Way I Help
+        Change Service
       </button>
     </div>
   );
