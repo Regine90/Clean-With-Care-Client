@@ -704,7 +704,6 @@ button.btn.primary-btn:hover {
 
 /* Media Query */
 
-/* Hide navbar on small screens by default */
 @media (max-width: 768px) {
   .header {
     position: relative;
@@ -718,10 +717,9 @@ button.btn.primary-btn:hover {
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
-    width: 100%;
+    width: 200px;
     display: none;
-    z-index: 1000;
-    transition: all 0.3s ease-in-out;
+    z-index: 999;
   }
 
   .navbar.active {
@@ -732,11 +730,13 @@ button.btn.primary-btn:hover {
     display: inline-block;
     font-size: 1.8rem;
     color: var(--White);
+    cursor: pointer;
   }
 }
 
-/* Hide burger icon on large screens */
+/* Make burger icon hidden on large screens */
 #menu-btn {
   display: none;
 }
+
 
