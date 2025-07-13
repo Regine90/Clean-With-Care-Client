@@ -40,7 +40,7 @@ function CommunityCard({ person, onDelete, onUpdate }) {
   const handleUpdate = (e) => {
     e.preventDefault();
 
-    fetch(`${API_BASE_URL}/api/community-helpers/${community._id}`, {
+    fetch(`${API_BASE_URL}/api/community-helpers/update/${community._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
