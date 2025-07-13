@@ -47,7 +47,7 @@ function CommunityCard({ person, onDelete, onUpdate }) {
     })
       .then((res) => res.json())
       .then((result) => {
-        const updated = result.data;
+        const updated = result.data || result;
         setCommunity(updated);
         setEditing(false);
         onUpdate(updated);
