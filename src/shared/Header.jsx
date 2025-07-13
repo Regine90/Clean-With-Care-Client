@@ -5,27 +5,38 @@ import "./styles.css";
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header className="header">
-      <Link to="/" className="logo">
+      <Link to="/" className="logo" onClick={closeMenu}>
         <i className="fa-solid fa-hand-holding-heart"></i> CleanWithCare
       </Link>
 
       <nav className={`navbar ${menuOpen ? "active" : ""}`}>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/find">Community Finding</Link>
-        <Link to="/contact">Contact Us</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/" onClick={closeMenu}>
+          Home
+        </Link>
+        <Link to="/about" onClick={closeMenu}>
+          About
+        </Link>
+        <Link to="/find" onClick={closeMenu}>
+          Community Finding
+        </Link>
+        <Link to="/contact" onClick={closeMenu}>
+          Contact Us
+        </Link>
+        <Link to="/login" onClick={closeMenu}>
+          Login
+        </Link>
+        <Link to="/signup" onClick={closeMenu}>
+          Sign Up
+        </Link>
       </nav>
 
       <div className="icons">
-        <Link to="/login" id="login-btn">
+        <Link to="/login" id="login-btn" onClick={closeMenu}>
           <i className="fa fa-user"></i>
         </Link>
         <i className="fa fa-bars" id="menu-btn" onClick={toggleMenu}></i>
