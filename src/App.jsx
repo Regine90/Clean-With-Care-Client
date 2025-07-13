@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Header from "./shared/Header";
 import Footer from "./shared/Footer";
+import CreateHelper from "./components/CreateHelper";
 
 function App() {
   useEffect(() => {
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <>
-    <Header />
+      <Header />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
@@ -46,6 +47,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/createHelper" element={<CreateHelper />} />
       </Routes>
       <Footer myFunction={topFunction} />
     </>

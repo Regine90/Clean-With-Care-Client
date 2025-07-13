@@ -585,6 +585,13 @@ button.btn.primary-btn:hover {
   gap: 2rem;
 }
 
+.create {
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
 /* Testimonial Part & Body*/
 .index-hero {
   display: flex;

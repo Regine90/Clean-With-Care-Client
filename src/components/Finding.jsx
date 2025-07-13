@@ -1,7 +1,6 @@
 import "../shared/styles.css";
 import React, { useState, useEffect } from "react";
 import CommunityCard from "../components/CommunityCard";
-import communityData from "../data/communityData";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -13,10 +12,11 @@ function Finding() {
       .then((response) => response.json())
       .then((results) => {
         console.log("Fetched data:", results);
-        setPeople(communityData); 
+        setPeople(results.data.helpers); 
       })
       .catch((error) => console.log(error));
   }, []);
+  
 
   return (
     <main className="finding-page">
@@ -35,7 +35,20 @@ function Finding() {
             <p>No community members found.</p>
           ) : (
             people.map((person) => (
-              <CommunityCard key={person._id} person={person} />
+              <CommunityCard
+                key={person._id}
+                person={person}
+                onDelete={(id) =>
+                  setPeople((prevPeople) =>
+                    prevPeople.filter((p) => p._id !== id)
+                  )
+                }
+                onUpdate={(updated) =>
+                  setPeople((prevPeople) =>
+                    prevPeople.map((p) => (p._id === updated._id ? updated : p))
+                  )
+                }
+              />
             ))
           )}
         </div>
