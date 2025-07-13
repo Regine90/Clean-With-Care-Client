@@ -29,7 +29,7 @@ function CommunityCard({ person, onDelete, onUpdate }) {
   };
 
   const handleDelete = () => {
-    fetch(`${API_BASE_URL}/api/community-helpers/${community._id}`, {
+    fetch(`${API_BASE_URL}/api/community-helpers/delete/${community._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
