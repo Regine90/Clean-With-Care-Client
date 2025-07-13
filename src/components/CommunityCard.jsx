@@ -61,44 +61,68 @@ function CommunityCard({ person, onDelete, onUpdate }) {
   return (
     <div className="community-card">
       {editing ? (
-        <form onSubmit={handleUpdate}>
-          <input
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-          <input name="area" value={formData.area} onChange={handleChange} />
-          <input
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-          />
-          <button type="submit" className="btn primary-btn">
-            Save
-          </button>
-          <button
-            type="button"
-            onClick={() => setEditing(false)}
-            className="btn"
-          >
-            Cancel
-          </button>
+        <form onSubmit={handleUpdate} className="edit-form">
+          <div className="form-group">
+            <label htmlFor="firstName">My name is</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="area">Location</label>
+            <input
+              type="text"
+              id="area"
+              name="area"
+              value={formData.area}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="service">Service</label>
+            <input
+              type="text"
+              id="service"
+              name="service"
+              value={formData.service}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="button-group">
+            <button type="submit" className="btn primary-btn">
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={() => setEditing(false)}
+              className="btn secondary-btn"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       ) : (
-        <>
-          <h2>My Name Is {community.firstName}</h2>
-          <p>I Live In {community.area}</p>
-          <p>I Work As A {community.service}</p>
+        <div className="button-group">
           <button className="btn primary-btn" onClick={handleChangeService}>
             Change Service
           </button>
-          <button className="btn" onClick={() => setEditing(true)}>
+          <button
+            className="btn secondary-btn"
+            onClick={() => setEditing(true)}
+          >
             Edit
           </button>
           <button className="btn danger-btn" onClick={handleDelete}>
             Delete
           </button>
-        </>
+        </div>
       )}
     </div>
   );

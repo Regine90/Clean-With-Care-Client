@@ -646,6 +646,43 @@ button.btn.primary-btn:hover {
   font-weight: bold;
 }
 
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Secondary button — matches other accent styles */
+.btn.secondary-btn {
+  background-color: var(--MutedLavender);
+  color: var(--White);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  border: none;
+}
+
+.btn.secondary-btn:hover {
+  background-color: var(--PrimaryBlue);
+}
+
+/* Danger button — using custom red tones for contrast but still soft */
+.btn.danger-btn {
+  background-color: #b23c3c;
+  color: var(--White);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  border: none;
+}
+
+.btn.danger-btn:hover {
+  background-color: #911f1f;
+}
+
+
 /* Slide Show */
 .slide-show-wrapper {
   display: flex;
