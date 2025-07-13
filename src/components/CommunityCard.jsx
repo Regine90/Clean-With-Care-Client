@@ -109,19 +109,25 @@ function CommunityCard({ person, onDelete, onUpdate }) {
           </div>
         </form>
       ) : (
-        <div className="button-group">
-          <button className="btn primary-btn" onClick={handleChangeService}>
-            Change Service
-          </button>
-          <button
-            className="btn secondary-btn"
-            onClick={() => setEditing(true)}
-          >
-            Edit
-          </button>
-          <button className="btn danger-btn" onClick={handleDelete}>
-            Delete
-          </button>
+        <div>
+          <h2>My Name Is {community.firstName}</h2>
+          <p>I Live In {community.area}</p>
+          <p>I Work As A {community.service}</p>
+
+          <div className="button-group">
+            <button className="btn primary-btn" onClick={handleChangeService}>
+              Change Service
+            </button>
+            <button
+              className="btn secondary-btn"
+              onClick={() => setEditing(true)}
+            >
+              Edit
+            </button>
+            <button className="btn danger-btn" onClick={handleDelete}>
+              Delete
+            </button>
+          </div>
         </div>
       )}
     </div>
